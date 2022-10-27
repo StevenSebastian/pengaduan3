@@ -66,9 +66,9 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Role</h6>
-                        <a class="collapse-item" href="buttons.html">Create</a>
-                        <a class="collapse-item" href="cards.html">Edit</a>
-                        <a class="collapse-item" href="cards.html">Index</a>
+                        <a class="collapse-item" href="{{url('/role/create')}}">Create</a>
+                        <!-- <a class="collapse-item" href="cards.html">Edit</a> -->
+                        <a class="collapse-item" href="{{url('/role')}}">Index</a>
                     </div>
                 </div>
             </li>

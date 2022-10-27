@@ -27,9 +27,9 @@ Route::view('/admin', 'home');
 
 
 
-Route::group(['prefix'=> 'role'], function(){
-    Route::get('/create', 'RoleController@create')->name('role.create');
-    Route::get('/store', 'RoleController@store')->name('role.store');;
+// Route::group(['prefix'=> 'role'], function(){
+//     Route::post('/create', 'RoleController@create')->name('role.store');
 
-});
+// });
+Route::resource('/role', RoleController::class);
 
