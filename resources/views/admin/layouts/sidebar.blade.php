@@ -22,7 +22,7 @@
 
 </head>
 
-<body id="page-top" class="vertical-layout vertical-menu-modern **dark-layout** navbar-floating footer-static  ">>
+<body id="page-top" class="vertical-layout vertical-menu-modern **dark-layout** navbar-floating footer-static  ">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
