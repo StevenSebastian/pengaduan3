@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Role;
+use App\Http\Controllers\Permission;
 
 
 
@@ -32,4 +33,5 @@ Route::view('/admin', 'home');
 
 // });
 Route::resource('/role', RoleController::class);
+Route::resource('/permission', PermissionController::class);
 
