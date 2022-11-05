@@ -4,11 +4,43 @@
 <div class="container">
     <div class="card shadow mb-4 my-5">
         <div class="card-header py-3">
-            <h6 class="m-font-weight-bold text-primary">List Permission</h6>
+            <h6 class="m-font-weight-bold text-primary">List Permission</h6> 
+            
         </div>
+        <!-- <br> -->
+        <!-- <div>
+        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                                aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                                <br>
+                                <div class="dataTables_length" id="dataTable_length"> 
+        <label> 
+            "Show" 
+            <select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm">
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+            "entries" 
+        </label> 
+    </div>
+</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+
+                    </form> -->
+        <!-- </div> -->
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
                     <thead>
                         <tr>
                             <th>No</th>
@@ -35,7 +67,7 @@
                                         class="btn btn-outline-success">Edit</button></a>
                             </td>
                             <td>
-                                <!-- Button trigger modal --> <button type="button" class="btn btn-danger"
+                                <!-- Button trigger modal --> <button type="button" class="btn btn-outline-danger"
                                     data-toggle="modal" data-target="#exampleModal{{$permission->id}}"> Delete </button>
                                 <!-- Modal -->
                                 <div class="modal fade" id="exampleModal{{$permission->id}}" tabindex="-1"
@@ -67,7 +99,6 @@
                         @else 
                         <td>
                             Tidak ada permission yang dapat ditampilkan.
-
                         </td>
                         @endif 
                     </tbody>
@@ -75,4 +106,5 @@
             </div>
         </div>
     </div>
-</div> @endsection
+</div>
+ @endsection
