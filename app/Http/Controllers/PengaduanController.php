@@ -14,7 +14,9 @@ class PengaduanController extends Controller
      */
     public function index()
     {
-        //
+        $pengaduans = Pengaduan::get();
+        return view('pengaduan.index',compact('pengaduans'));
+
     }
 
     /**
@@ -24,7 +26,8 @@ class PengaduanController extends Controller
      */
     public function create()
     {
-        //
+        return view ('pengaduan.create');
+
     }
 
     /**
@@ -35,7 +38,19 @@ class PengaduanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nik'=>'required'
+        ]);
+
+        Pengaduan::create([
+            'tgl_pengaduan'=>$request->get('tgl_pengaduan'),
+            'nik'=>$request->get('nik'),
+            'isi_laporan'=>$request->get('isi_laporan'),
+            'foto'=>$request->get('foto'),
+            'status'=>$request->get('status')
+        ]);
+        return redirect()->back()->with('message', 'Pengaduan berhasil ditambahkan');
+
     }
 
     /**
@@ -57,7 +72,9 @@ class PengaduanController extends Controller
      */
     public function edit(c $c)
     {
-        //
+        $pengaduan = Pengaduan::find($id);
+        return view('pengaduan.edit',compact(('pengaduan')));
+
     }
 
     /**
@@ -69,7 +86,14 @@ class PengaduanController extends Controller
      */
     public function update(Request $request, c $c)
     {
-        //
+        $this->validate($request, [
+            'nik'=>'required'
+        ]);
+
+        $pengaduan = Pengaduan::find($id);
+        $pengaduan->update($request->all());
+        return redirect()->back()->with('message', 'Pengaduan berhasil diupdate!');    
+
     }
 
     /**
@@ -80,6 +104,8 @@ class PengaduanController extends Controller
      */
     public function destroy(c $c)
     {
-        //
+        Pengaduan::find($id)->delete();
+        return redirect()->back()->with('message', 'Pengaduan berhasil dihapus!');
+
     }
 }

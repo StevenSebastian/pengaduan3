@@ -34,4 +34,5 @@ Route::view('/admin', 'home');
 // });
 Route::resource('/role', RoleController::class);
 Route::resource('/permission', PermissionController::class);
+Route::resource('/pengaduan', PengaduanController::class);
 
