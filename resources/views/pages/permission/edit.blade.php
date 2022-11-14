@@ -16,7 +16,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Tambah Permission</h6>
                 </div>
             </div> -->
-            <form action="{{route('permission.update',[$permissions->id])}}" method="post">
+            <form action="{{route('permission.update',[$permission->id])}}" method="post">
             @csrf
                 <div class="card">
                     <div class="card-header">Edit Permission</div>
@@ -89,4 +89,4 @@
         </div>
     </div>
 </div>
-@endsection
+    @endsection

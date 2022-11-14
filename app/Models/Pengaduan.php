@@ -8,10 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Pengaduan extends Model
 {
     use HasFactory;
-
     protected $guarded = [];
 
-    public function status() {
-        return $this->hasOne(status::class);
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pengaduan;
 use Illuminate\Http\Request;
+use App\Models\Pengaduan;
 
 class PengaduanController extends Controller
 {
@@ -16,7 +16,6 @@ class PengaduanController extends Controller
     {
         $pengaduans = Pengaduan::get();
         return view('pengaduan.index',compact('pengaduans'));
-
     }
 
     /**
@@ -27,7 +26,6 @@ class PengaduanController extends Controller
     public function create()
     {
         return view ('pengaduan.create');
-
     }
 
     /**
@@ -39,73 +37,96 @@ class PengaduanController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nik'=>'required'
+            'tgl_pengaduan'=>'required',
+            'isi_laporan'=>'required',
+            'foto'=>'required'         
         ]);
+
+        $foto = $request->file('foto');
+        $name = time().'.'.$foto->getClientOriginalExtension();
+        $destinationPath = public_path('/image');
+        $foto->move($destinationPath, $name);
 
         Pengaduan::create([
             'tgl_pengaduan'=>$request->get('tgl_pengaduan'),
-            'nik'=>$request->get('nik'),
+            'user_id'=>$request->get('user_id'),
             'isi_laporan'=>$request->get('isi_laporan'),
-            'foto'=>$request->get('foto'),
-            'status'=>$request->get('status')
+            'foto'=>$name
         ]);
         return redirect()->back()->with('message', 'Pengaduan berhasil ditambahkan');
-
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\c  $c
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(c $c)
+    public function show($id)
     {
-        //
+        // value="{{Auth::user()->nik}}" readonly
+        // <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\c  $c
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(c $c)
+    public function edit($id)
     {
         $pengaduan = Pengaduan::find($id);
         return view('pengaduan.edit',compact(('pengaduan')));
-
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\c  $c
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, c $c)
+    public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nik'=>'required'
+            'tgl_pengaduan'=>'required',
+            'isi_laporan'=>'required',
+            'foto'=>'required'       
         ]);
 
-        $pengaduan = Pengaduan::find($id);
-        $pengaduan->update($request->all());
-        return redirect()->back()->with('message', 'Pengaduan berhasil diupdate!');    
+        // $pengaduan = Pengaduan::find($id);
+        // $pengaduan->update($request->all());
 
+        $pengaduan = Pengaduan::find($id);
+        $name = $pengaduan->foto;
+        if($request->hasFile('foto')){
+            $foto = $request->file('foto');
+            $name = time().'.'.$foto->getClientOriginalExtension();    
+            $destinationPath = public_path('/image');
+            $foto->move($destinationPath,$name);
+        }
+        
+        $pengaduan->tgl_pengaduan = $request->get('tgl_pengaduan');
+        $pengaduan->user_id = $request->get('user_id');
+        $pengaduan->isi_laporan = $request->get('isi_laporan');
+        $pengaduan->foto = $name;
+        $pengaduan->save();
+
+        return redirect()->back()->with('message', 'Pengaduan berhasil diupdate!');    
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\c  $c
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(c $c)
+    public function destroy($id)
     {
-        Pengaduan::find($id)->delete();
-        return redirect()->back()->with('message', 'Pengaduan berhasil dihapus!');
-
+        $pengaduan = Pengaduan::find($id);
+        $pengaduan->delete();
+        return
+        redirect()->back()->with('message','Kategori berhasil dihapus');
     }
 }
