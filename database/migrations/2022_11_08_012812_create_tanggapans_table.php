@@ -19,6 +19,8 @@ class CreateTanggapansTable extends Migration
             $table->date('tgl_tanggapan');
             $table->string('tanggapan');
             $table->integer('user_id');
+            $table->foreign('pengaduan_id')->refrences('id')->on('pengaduans')->onDelete('cascade');
+            $table->foreign('user_id')->refrences('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
