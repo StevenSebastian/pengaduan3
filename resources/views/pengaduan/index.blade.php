@@ -21,6 +21,7 @@
                                 <th scope="col">Foto</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Edit</th>
+                                <th scope="col">View</th>
                                 <th scope="col">Delete</th>
                             </tr>
                         </thead>
@@ -41,6 +42,11 @@
                                 <td>
                                     <a href="{{route('pengaduan.edit',[$pengaduan->id])}}"><button
                                             class="btn btn-outline-success">Edit</button></a>
+                                </td>
+
+                                <td>
+                                    <a href="{{route('detail',[$pengaduan->id])}}"><button
+                                            class="btn btn-outline-success">View</button></a>
                                 </td>
 
                                 <td>

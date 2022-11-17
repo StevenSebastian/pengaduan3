@@ -129,4 +129,9 @@ class PengaduanController extends Controller
         return
         redirect()->back()->with('message','Kategori berhasil dihapus');
     }
+
+    public function detailPengaduan($id){
+        $pengaduan = Pengaduan::find($id);
+        return view('pengaduan.detail', compact('pengaduan'));
+        }
 }
