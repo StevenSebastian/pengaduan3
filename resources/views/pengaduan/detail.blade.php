@@ -33,8 +33,11 @@
                     <!-- <div class="card-header">Tanggapan Pengaduan</div>
 <br> -->
 <br><br>
-                    <a href="{{url('/tanggapan/create')}}"><button
-                                            class="btn btn-outline-warning">Beri Tanggapan</button></a>
+                    <div class="form-group">
+                        <a href="{{ route('tanggapan.show',[$pengaduan->id])}}"></a>
+                        <button class="btn btn-outline-warning">Beri Tanggapan</button>
+
+                    </div>
                                     
                 </div>
                     </div>

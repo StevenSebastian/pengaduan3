@@ -45,7 +45,8 @@ class TanggapanController extends Controller
      */
     public function show($id)
     {
-        //
+        $pengaduan = Pengaduan::find($id);
+        return view('tanggapan.create', compact('pengaduan'));
     }
 
     /**
