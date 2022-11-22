@@ -36,7 +36,7 @@ Route::resource('/role', RoleController::class);
 Route::resource('/permission', PermissionController::class);
 Route::resource('/pengaduan', PengaduanController::class);
 
-Route::get('/pengaduan {id}',[App\Http\Controllers\PengaduanController::class, 'detailPengaduan'])->name('detail');
+Route::get('/pengaduan {id}',[App\Http\Controllers\PengaduanController::class, 'detailPengaduan'])->name('pengaduan.detail');
 
 
 

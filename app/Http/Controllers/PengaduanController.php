@@ -64,8 +64,8 @@ class PengaduanController extends Controller
      */
     public function show($id)
     {
-        // value="{{Auth::user()->nik}}" readonly
-        // <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+        $pengaduan = Pengaduan::find($id);
+        return view('pengaduan.detail', compact('pengaduan'));
     }
 
     /**
