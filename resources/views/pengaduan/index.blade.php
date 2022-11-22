@@ -45,7 +45,7 @@
                                 </td>
 
                                 <td>
-                                    <a href="{{route('detail',[$pengaduan->id])}}"><button
+                                    <a href="{{route('pengaduan.show',[$pengaduan->id])}}"><button
                                             class="btn btn-outline-success">View</button></a>
                                 </td>
 

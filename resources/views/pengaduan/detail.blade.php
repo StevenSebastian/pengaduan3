@@ -32,12 +32,19 @@
                     
                     <!-- <div class="card-header">Tanggapan Pengaduan</div>
 <br> -->
-<br><br>
+<br><br>               
+                    @if(empty(($pengaduan->tanggapan->tanggapan)))
                     <div class="form-group">
                         <a href="{{ route('tanggapan.show',[$pengaduan->id])}}"></a>
                         <button class="btn btn-outline-warning">Beri Tanggapan</button>
-
                     </div>
+                    @else
+                    <div class="form-group">
+                        <a href="{{ route('tanggapan.edit',[$pengaduan->id])}}"></a>
+                        <button class="btn btn-outline-warning">Update Tanggapan</button>
+                    </div>
+                    @endif
+
                                     
                 </div>
                     </div>
