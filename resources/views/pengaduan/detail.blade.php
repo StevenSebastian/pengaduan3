@@ -35,13 +35,13 @@
 <br><br>               
                     @if(empty(($pengaduan->tanggapan->tanggapan)))
                     <div class="form-group">
-                        <a href="{{ route('tanggapan.show',[$pengaduan->id])}}"></a>
-                        <button class="btn btn-outline-warning">Beri Tanggapan</button>
+                        <a href="{{ route('tanggapan.show',[$pengaduan->id])}}">
+                        <button class="btn btn-outline-warning">Beri Tanggapan</button></a>
                     </div>
                     @else
                     <div class="form-group">
-                        <a href="{{ route('tanggapan.edit',[$pengaduan->id])}}"></a>
-                        <button class="btn btn-outline-warning">Update Tanggapan</button>
+                        <a href="{{ route('tanggapan.edit',[$pengaduan->id])}}">
+                        <button class="btn btn-outline-warning">Update Tanggapan</button></a>
                     </div>
                     @endif
 

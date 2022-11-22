@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Tanggapan;
+use App\Models\Pengaduan;
+
 
 class TanggapanController extends Controller
 {
@@ -47,7 +50,7 @@ class TanggapanController extends Controller
             'user_id'=>$request->get('user_id'),
         ]);
 
-        Pengaduan::where('id',$request->pengaduan->id)->update([
+        Pengaduan::where('id',$request->pengaduan_id)->update([
         'status'=>$request->get('status'),
         ]);
 
