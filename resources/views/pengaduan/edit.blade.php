@@ -9,7 +9,7 @@
     @endif
     <div class="card o-hidden border-0 shadow-lg my-5">
         <div class="card-body p-0">
-            <form action="{{route('tanggapan.update', [$tanggapan->id])}}" method="post">
+            <form action="{{route('tanggapan.update', [$tanggapans->id])}}" method="post">
                 @csrf
                 {{method_field('PUT')}}
                 <div class="card">
@@ -17,8 +17,7 @@
                             Tanggapan</b></div>
                     <div class="card-body">
                         value="{{ $tanggapan->pengaduan->id }}">
-                        <input type="hidden" name="pengaduan_id" <input type="hidden" name="user_id"
-                            value="{{Auth: :user ()->id}}">
+                        <input type="hidden" name="pengaduan_id" <input type="hidden" name="user_id" value="{{Auth::user ()->id}}">
                         <div class="form-group">
                             <label>Tanggal Tanggapan</label>
                             <input type="date" name="tgl_tanggapan"

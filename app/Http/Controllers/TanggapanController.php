@@ -37,25 +37,24 @@ class TanggapanController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'tgl_tannggapan'=>'required',
+        $this->validate($request,[
+            'tgl_tanggapan'=>'required',
             'tanggapan'=>'required',
-            'status'=>'required',
+            'status'=>'required'
         ]);
 
         Tanggapan::create([
             'pengaduan_id'=>$request->get('pengaduan_id'),
             'tgl_tanggapan'=>$request->get('tgl_tanggapan'),
             'tanggapan'=>$request->get('tanggapan'),
-            'user_id'=>$request->get('user_id'),
+            'user_id'=>$request->get('user_id')
         ]);
 
-        Pengaduan::where('id',$request->pengaduan_id)->update([
-        'status'=>$request->get('status'),
+        Pengaduan::where('id', $request->pengaduan_id)->update([
+            'status'=>$request->get('status')
         ]);
 
-        return redirect()->back()->with('message','Tanggapan berhasil Dilaporkan');
-        
+        return redirect()->back()->with('message', 'Tanggapan berhasil dilaporkan!');
     }
 
     /**

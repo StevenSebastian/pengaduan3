@@ -15,8 +15,9 @@ class CreatePengaduansTable extends Migration
     {
         Schema::create('pengaduans', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBiginteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->date('tgl_pengaduan');
-            $table->integer('nik');
             $table->string('isi_laporan');
             $table->string('foto');
             $table->enum('status',['0','proses','selesai'])->default('0');
