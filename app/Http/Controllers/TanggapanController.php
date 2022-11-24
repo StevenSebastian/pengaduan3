@@ -78,7 +78,7 @@ class TanggapanController extends Controller
     public function edit($id)
     {
         $tanggapan = Tanggapan::find($id);
-        return view('tannggapan.edit', compact('tanggapan'));
+        return view('tanggapan.edit', compact('tanggapan'));
     }
 
     /**

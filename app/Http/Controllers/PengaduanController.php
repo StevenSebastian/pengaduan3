@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pengaduan;
+use Auth;
 
 class PengaduanController extends Controller
 {
@@ -133,5 +134,11 @@ class PengaduanController extends Controller
     public function detailPengaduan($id){
         $pengaduan = Pengaduan::find($id);
         return view('pengaduan.detail', compact('pengaduan'));
+        }
+
+        public function pengaduanUser()
+        {
+            $pengaduans = Pengaduan::where('user_id', Auth::user()->id)->latest()->get();
+            return view('pengaduan.index',compact('pengaduans'));
         }
 }

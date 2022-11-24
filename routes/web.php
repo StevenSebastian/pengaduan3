@@ -38,7 +38,7 @@ Route::resource('/role', RoleController::class);
 Route::resource('/permission', PermissionController::class);
 Route::resource('/pengaduan', PengaduanController::class);
 
-Route::resource('tanggapan', TanggapanController::class);
+Route::resource('/tanggapan', TanggapanController::class);
 
 
 
