@@ -4,7 +4,7 @@
 <div class="container">
 
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-header">List Pengaduan</div>
 
@@ -45,7 +45,7 @@
                                 </td>
 
                                 <td>
-                                    <a href="{{route('detail',[$pengaduan->id])}}"><button
+                                    <a href="{{route('pengaduan.show',[$pengaduan->id])}}"><button
                                             class="btn btn-outline-success">View</button></a>
                                 </td>
 

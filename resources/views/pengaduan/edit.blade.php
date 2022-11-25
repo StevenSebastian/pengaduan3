@@ -17,12 +17,16 @@
 
             <div class="card-body">
                         <div class="form-group">
+                            <label for="name">Nama</label>
+                            <input type="text" name="name" class="form-control" value="{{$pengaduan->user->name}}" readonly>
+                        </div>
+                        <div class="form-group">
                             <label for="tgl_pengaduan">Tanggal Pengaduan</label>
                             <input type="date" name="tgl_pengaduan" class="form-control" value="{{$pengaduan->tgl_pengaduan}}">
                         </div>
                         <div class="form-group">
                             <label for="nik">Nik</label>
-                            <input type="text" name="nik" class="form-control" value="{{$pengaduan->nik}}">
+                            <input type="text" name="nik" class="form-control" value="{{$pengaduan->user->nik}}" readonly>
                         </div>
 
                         <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
@@ -33,15 +37,16 @@
                         </div>
                         <div class="form-group">
                             <label for="foto">Foto</label>
-                            <input type="file" name="foto" class="form-control" value="{{$pengaduan->foto}}" >
+                            <input type="file" name="foto" class="form-control" value="{{$pengaduan->foto}}">
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="status">Status</label>
                             <input type="text" name="status" class="form-control" value="{{$pengaduan->status}}">
-                        </div>
+                        </div> -->
                         <div class="form-group">
                     <button class="btn btn-outline-primary">Update</button>
                    </div>
+                </div>
                 </form>
             </div>
         </div>

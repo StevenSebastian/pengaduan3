@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Role;
 use App\Http\Controllers\Permission;
+use App\Http\Controllers\Pengaduan;
+use App\Http\Controllers\Tanggapan;
 
 
 
@@ -36,7 +38,7 @@ Route::resource('/role', RoleController::class);
 Route::resource('/permission', PermissionController::class);
 Route::resource('/pengaduan', PengaduanController::class);
 
-Route::get('/pengaduan {id}',[App\Http\Controllers\PengaduanController::class, 'detailPengaduan'])->name('detail');
+Route::resource('/tanggapan', TanggapanController::class);
 
 
 
