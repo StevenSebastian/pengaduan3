@@ -1,99 +1,74 @@
-@extends('admin.layouts.master')
+@extends ('admin.layouts.master')
 
-@section('content')
+@section ('content')
 <div class="container">
+    @if(Session::has('message'))
+    <div class="alert alert-success">
+        {{Session::get('message')}}</div>
+    @endif
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
 
-    <div class="row justify-content-center">
-        <div class="col-md-10">
             <div class="card">
-                <div class="card-header">List Pengaduan</div>
+                <div class="card-header"><b>Detail Pengaduan</b></div>
 
                 <div class="card-body">
-                    <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">User</th>
-                                <th scope="col">Tanggal Pengaduan</th>
-                                <!-- <th scope="col">Nik</th> -->
-                                <th scope="col">Isi Laporan</th>
-                                <th scope="col">Foto</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Edit</th>
-                                <th scope="col">View</th>
-                                <th scope="col">Delete</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                    
-                        </tfoot>
-                        <tbody>
-                            @if(count($pengaduans)>0)
-                            @foreach($pengaduans as $key=>$pengaduan)
-                            <tr>
-                                <th scope="row">{{$key+1}}</th>
-                                <td>{{$pengaduan->user->name}}</td>
-                                <td>{{$pengaduan->tgl_pengaduan}}</td>
-                                <!-- <td>{{$pengaduan->user_id}}</td> -->
-                                <td>{{$pengaduan->isi_laporan}}</td>
-                                <td><img src="{{asset('image')}}/{{$pengaduan->foto}}" width="100"></td>
-                                <td>{{$pengaduan->status}}</td>
-                                <td>
-                                    <a href="{{route('pengaduan.edit',[$pengaduan->id])}}"><button
-                                            class="btn btn-outline-success">Edit</button></a>
-                                </td>
-
-                                <td>
-                                    <a href="{{route('pengaduan.show',[$pengaduan->id])}}"><button
-                                            class="btn btn-outline-success">View</button></a>
-                                </td>
-
-                                <td>
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-outline-danger" data-toggle="modal"
-                                        data-target="#exampleModal{{$pengaduan->id}}">
-                                        Delete
-                                    </button>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal{{$pengaduan->id}}" tabindex="-1"
-                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <form action="{{route('pengaduan.destroy',[$pengaduan->id])}}" method="post">
-                                                @csrf
-                                                {{method_field('DELETE')}}
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">DELETE</h5>
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        Apakah Anda Yakin ?
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Close</button>
-
-                                                        <button type="submit"
-                                                            class="btn btn-outline-danger">Delete</button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            @endforeach
+                    <div class="form-group">
+                        Nama Pelapor :
+                        <b>{{$pengaduan->user->name}}</b><br>
+                        Nik : <b>{{$pengaduan->user->nik}}</b><br>
+                        Tanggal Pengaduan : <b>{{$pengaduan->tgl_pengaduan}}</b><br>
+                        Status : <b>@if ($pengaduan->status == '0')
+                            <span class="px-3 bg-gradient-danger text-white">
+                                {{$pengaduan->status}}
+                            </span>
+                            @elseif ($pengaduan->status == 'Proses')
+                            <span class="px-3 bg-gradient-warning text-white">
+                                {{ $pengaduan->status}}
+                            </span>
                             @else
-                            <td>Tidak ada pengaduan yang dapat ditampilkan.</td>
-                            @endif
-                        </tbody>
-                    </table>
+                            <span class="px-3 bg-gradient-success text-white">
+                                {{$pengaduan->status}}
+                            </span>
+                            @endif</b><br>
+                        Isi pengaduan : <b>{{$pengaduan->isi_laporan}}</b><br>
+                        Foto : <br><img src="{{asset('image')}}/{{$pengaduan->foto}}" width="50%">
                     </div>
+
+                    <div class="form-group">
+                        Tanggapan :
+                        @if(empty($pengaduan->tanggapan->tanggapan))
+                        <b>Belum ada Tanggapan</b>
+                        @else
+                        <b>{{ $pengaduan->tanggapan->tanggapan }}</b>
+                        @endif
+
+                        @if(Auth::user()->role != 0)
+                        @if(empty($pengaduan->tanggapan->tanggapan))
+                        <div class="form-group">
+                            <a href="{{route('tanggapan.show',[$pengaduan->id])}}">
+                                <button class="btn btn-primary">Beri Tanggapan</button>
+                            </a>
+
+                        @else
+                        <div class="form-group">
+                            <a href="{{route('tanggapan.edit',[$pengaduan->tanggapan->id])}}">
+                                <button class="btn btn-primary">Update Tanggapan</button>
+                            </a>
+                        </div>
+                        @endif
+                        @endif
+                    </div>
+
+                    <!-- @if(Auth::user()->role !== 0)
+                        //Jika role tidak sama dengan 0, tampil tombol tanggapan
+                    @endif -->
+
+
+                    <!-- <div class="form-group">
+                        <a href="{{route('tanggapan.show', [$pengaduan->id])}}"><button class="btn btn-primary">Beri
+                                Tanggapan</i></button</a> 
+                            </div>  -->
                 </div>
             </div>
         </div>

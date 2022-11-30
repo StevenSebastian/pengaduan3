@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Website Pengaduan Masyarakat</title>
+    <title>SB Admin 2 - Dashboard</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('template/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -22,7 +22,7 @@
 
 </head>
 
-<body id="page-top" class="vertical-layout vertical-menu-modern **dark-layout** navbar-floating footer-static  ">
+<body id="page-top">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -31,11 +31,11 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-fw fa-star"></i>
+                    <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Pengaduan Masyarakat <sup></sup></div>
+                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
             </a>
 
             <!-- Divider -->
@@ -43,9 +43,81 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="index.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
+            </li>
+
+
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            @if(Auth::user()->role == 0)
+            <div class="sidebar-heading">
+                MASYARAKAT
+            </div>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{url('/user/pengaduan')}}" data-toggle="collapse" data-target="#collapseFour"
+                    aria-expanded="true" aria-controls="collapseFour">
+                    <i class="fas fa-fw fa-user-alt"></i>
+                    <span>Pengaduan</span>
+                </a>
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Menu:</h6>
+                        <a class="collapse-item" href="{{route('pengaduan.create')}}">Create</a>
+                        <a class="collapse-item" href="utilities-border.html">Edit</a>
+                        <a class="collapse-item" href="{{route('pengaduan.index')}}">List</a>
+                    </div>
+                </div>
+            </li>
+
+            @elseif(Auth::user()->role == 1)
+            <div class="sidebar-heading">
+                MASYARAKAT
+            </div>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{route('pengaduan.index')}}" data-toggle="collapse" data-target="#collapseFour"
+                    aria-expanded="true" aria-controls="collapseFour">
+                    <i class="fas fa-fw fa-user-alt"></i>
+                    <span>Pengaduan</span>
+                </a>
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Menu:</h6>
+                        <a class="collapse-item" href="{{route('pengaduan.create')}}">Create</a>
+                        <a class="collapse-item" href="utilities-border.html">Edit</a>
+                        <a class="collapse-item" href="{{route('pengaduan.index')}}">List</a>
+                    </div>
+                </div>
+            </li>
+
+            @elseif(Auth::user()->role == 2)
+            <div class="sidebar-heading">
+                MASYARAKAT
+            </div>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{route('pengaduan.index')}}" data-toggle="collapse" data-target="#collapseFour"
+                    aria-expanded="true" aria-controls="collapseFour">
+                    <i class="fas fa-fw fa-user-alt"></i>
+                    <span>Pengaduan</span>
+                </a>
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Menu:</h6>
+                        <a class="collapse-item" href="{{route('pengaduan.create')}}">Create</a>
+                        <a class="collapse-item" href="utilities-border.html">Edit</a>
+                        <a class="collapse-item" href="{{route('pengaduan.index')}}">List</a>
+                    </div>
+                </div>
             </li>
 
             <!-- Divider -->
@@ -53,89 +125,33 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                PETUGAS
             </div>
+
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Role</span>
+                    <i class="fas fa-fw fa-user-alt"></i>
+                    <span>Tanggapan</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Role :</h6>
-                        <a class="collapse-item" href="{{url('/role/create')}}">Create</a>
-                        <!-- <a class="collapse-item" href="cards.html">Edit</a> -->
-                        <a class="collapse-item" href="{{url('/role')}}">Index</a>
+                    <h6 class="collapse-header">Menu:</h6>
+                        <a class="collapse-item" href="{{route('tanggapan.create')}}">Create</a>
+                        <a class="collapse-item" href="utilities-border.html">Edit</a>
+                        <a class="collapse-item" href="{{route('tanggapan.index')}}">List</a>
                     </div>
                 </div>
             </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePeng"
-                    aria-expanded="true" aria-controls="collapsePeng">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Permission</span>
-                </a>
-                <div id="collapsePeng" class="collapse" aria-labelledby="headingPeng"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Permission :</h6>
-                        <a class="collapse-item" href="{{url('/permission/create')}}">Create</a>
-                        <a class="collapse-item" href="{{url('/permission')}}">Index</a>
-
-                    </div>
-                </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-user"></i>
-                    <span> Pengaduan</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Pengaduan :</h6>
-                        <a class="collapse-item" href="{{url('/pengaduan/create')}}">Create</a>
-                        <a class="collapse-item" href="{{url('/pengaduan')}}">Index</a>
-
-                    </div>
-                </div>
-            </li>
-
-            @if(Auth::user()->role == 1)
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-user"></i>
-                    <span> Pengaduan</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Pengaduan :</h6>
-                        <a class="collapse-item" href="{{url('/pengaduan/create')}}">Create</a>
-                        <a class="collapse-item" href="{{url('/user/pengaduan')}}">Index</a>
-
-                    </div>
-                </div>
-            </li>
-            @endif
-
-
-
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Addons
+                ADDMINISTRATOR
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -143,14 +159,14 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
+                    <span>User</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="{{url('/login')}}">Login</a>
-                        <a class="collapse-item" href="{{url('/register')}}">Register</a>
-                        <a class="collapse-item" href="{{url('/password/reset')}}">Forgot Password</a>
+                        <a class="collapse-item" href="login.html">Login</a>
+                        <a class="collapse-item" href="register.html">Register</a>
+                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
                         <a class="collapse-item" href="404.html">404 Page</a>
@@ -159,19 +175,53 @@
                 </div>
             </li>
 
-            <!-- Nav Item - Charts -->
+
+
+            <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Role</span>
+                </a>
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Menu:</h6>
+                        <a class="collapse-item" href="{{route('role.create')}}">Create</a>
+                        <a class="collapse-item" href="utilities-border.html">Edit</a>
+                        <a class="collapse-item" href="{{route('role.index')}}">List</a>
+                    </div>
+                </div>
             </li>
 
-            <!-- Nav Item - Tables -->
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
+                    aria-expanded="true" aria-controls="collapseThree">
+                    <i class="fas fa-fw fa-user-alt"></i>
+                    <span>Permission</span>
+                </a>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Menu:</h6>
+                        <a class="collapse-item" href="{{route('permission.create')}}">Create</a>
+                        <a class="collapse-item" href="utilities-border.html">Edit</a>
+                        <a class="collapse-item" href="{{route('permission.index')}}">List</a>
+                    </div>
+                </div>
             </li>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/laporan')}}">
+                    <i class="fas fa-fw fa-print"></i>
+                    <span>Laporan</span></a>
+            </li>
+            @endif
+
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -182,11 +232,13 @@
             </div>
 
             <!-- Sidebar Message -->
-            <!-- <div class="sidebar-card d-none d-lg-flex">
+            <div class="sidebar-card d-none d-lg-flex">
                 <img class="sidebar-card-illustration mb-2" src="{{asset('template/img/undraw_rocket.svg')}}" alt="...">
-                <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-            </div> -->
+                <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components,
+                    and more!</p>
+                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to
+                    Pro!</a>
+            </div>
 
         </ul>
         <!-- End of Sidebar -->
