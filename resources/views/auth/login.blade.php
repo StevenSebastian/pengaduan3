@@ -8,7 +8,7 @@
                 <div class="card-body p-0">
                     <!-- Nested Row within Card Body -->
                     <div class="row">
-                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                         <img class="col-lg-6 d-none d-lg-block bg-login-image" src="https://koinpro.co/wp-content/uploads/2022/07/NFT-monkey-3749.jpg" > 
 
                         <div class="col-lg-6">
                             <div class="p-5">
@@ -49,7 +49,7 @@
                                         <div class="custom-control custom-checkbox small ">
 
                                             <input type="checkbox" class="custom-control-input" id="remember"
-                                                name="remember" {{ old('remember') ? 'checked' : '' }}>>
+                                                name="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                             <label class="custom-control-label" for="remember">Remember Me</label>
                                         </div>

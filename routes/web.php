@@ -5,7 +5,7 @@ use App\Models\Role;
 use App\Http\Controllers\Permission;
 use App\Http\Controllers\Pengaduan;
 use App\Http\Controllers\Tanggapan;
-
+use App\Http\Controllers\PDF;
 
 
 /*
@@ -39,6 +39,8 @@ Route::resource('/permission', PermissionController::class);
 Route::resource('/pengaduan', PengaduanController::class);
 
 Route::resource('/tanggapan', TanggapanController::class);
-
+Route::get('/laporan','PengaduanController@laporan')->middleware('auth');
+Route::get('/laporan/cetak','PengaduanController@pdf')->middleware('auth');
+Route::get('/user/pengaduan', 'PengaduanController@pengaduanUser')->middleware('auth');
 
 
